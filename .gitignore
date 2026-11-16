@@ -1,0 +1,6 @@
+data/raw/
+data/generated/
+*.log
+.ipynb_checkpoints/
+__pycache__/
+*:Zone.Identifier
