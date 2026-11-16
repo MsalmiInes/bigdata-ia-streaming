@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>yarn.resourcemanager.hostname</name><value>resourcemanager</value></property>
+  <property><name>yarn.resourcemanager.bind-host</name><value>0.0.0.0</value></property>
+  <property><name>yarn.nodemanager.hostname</name><value>nodemanager</value></property>
+  <property><name>yarn.nodemanager.aux-services</name><value>mapreduce_shuffle</value></property>
+  <property><name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,HADOOP_MAPRED_HOME,PATH,LANG,TZ</value></property>
+
+  <!-- Ressources limitees pour tenir dans 8 Go de RAM WSL -->
+  <property><name>yarn.nodemanager.resource.memory-mb</name><value>2048</value></property>
+  <property><name>yarn.nodemanager.resource.cpu-vcores</name><value>4</value></property>
+  <property><name>yarn.scheduler.minimum-allocation-mb</name><value>256</value></property>
+  <property><name>yarn.scheduler.maximum-allocation-mb</name><value>2048</value></property>
+  <property><name>yarn.nodemanager.vmem-check-enabled</name><value>false</value></property>
+
+  <!-- FIFO : evite le blocage "ACCEPTED" du CapacityScheduler (limite AM 10 %) sur un petit noeud -->
+  <property><name>yarn.resourcemanager.scheduler.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fifo.FifoScheduler</value></property>
+
+  <!-- Evite "local-dirs are bad" quand le disque WSL est presque plein -->
+  <property><name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name><value>99</value></property>
+  <property><name>yarn.nodemanager.local-dirs</name><value>/hadoop/yarn/local</value></property>
+  <property><name>yarn.nodemanager.log-dirs</name><value>/hadoop/yarn/logs</value></property>
+  <property><name>yarn.log-aggregation-enable</name><value>false</value></property>
+</configuration>
