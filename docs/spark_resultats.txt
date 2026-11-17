@@ -12,19 +12,20 @@ Prediction de la note (RMSE, plus bas = mieux) :
   moyenne par film               0.8683
   moyenne par utilisateur        0.8298
   biais utilisateur + film       0.8319
-  ALS {'rank': 12, 'regParam': 0.1, 'maxIter': 10} 0.6615   (MAE 0.5308)
-  -> gain de 20.3 % sur la meilleure baseline
+  ALS {'rank': 12, 'regParam': 0.05, 'maxIter': 10} 0.5966   (MAE 0.4782)
+  -> gain de 28.1 % sur la meilleure baseline
 
 Classement des films (film pertinent = note >= 4.0) :
   systeme                                       P@5      R@5   NDCG@5
-  ALS (rank=12, reg=0.1)                     0.0434   0.0480   0.0518
+  ALS (rank=12, reg=0.05)                    0.0452   0.0519   0.0542
   meilleures notes (moyenne ajustee)         0.0125   0.0111   0.0149
   plus populaires (nb de notes)              0.0121   0.0108   0.0136
   au hasard (esperance exacte)               0.0131   0.0119        -
-  -> ALS : 3.3 fois meilleur que le hasard (Precision@5)
+  -> ALS : 3.5 fois meilleur que le hasard (Precision@5)
 
 Temps (reference pour le benchmark de la phase 8) :
-  entrainement ALS {'rank': 12, 'regParam': 0.1, 'maxIter': 10} : 18.1 s | executeurs : 1
+  entrainement ALS {'rank': 12, 'regParam': 0.1, 'maxIter': 10} : 17.8 s | executeurs : 1
+  validation croisee (9 combinaisons x 3 plis) : 209.3 s
   [OK] ALS meilleur que toutes les baselines (RMSE)
   [OK] ALS meilleur que le hasard (Precision@K)
   [OK] ALS meilleur que 'plus populaires' (Precision@K)

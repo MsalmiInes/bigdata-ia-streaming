@@ -2,7 +2,7 @@
   "k": 5,
   "relevant_threshold": 4.0,
   "seed": 42,
-  "fast": true,
+  "fast": false,
   "n_train": 79334,
   "n_test": 19959,
   "n_users": 1000,
@@ -19,25 +19,82 @@
     "moyenne par utilisateur": 0.8297694408196963,
     "biais utilisateur + film": 0.8318999756982399
   },
-  "bench_fit_seconds": 18.1,
+  "bench_fit_seconds": 17.8,
   "bench_fit_params": {
     "rank": 12,
     "regParam": 0.1,
     "maxIter": 10
   },
+  "cv_seconds": 209.3,
+  "cv_grid": [
+    {
+      "rank": 12,
+      "regParam": 0.05,
+      "maxIter": 10,
+      "cv_rmse": 0.6390895488721967
+    },
+    {
+      "rank": 12,
+      "regParam": 0.02,
+      "maxIter": 10,
+      "cv_rmse": 0.6459245786246467
+    },
+    {
+      "rank": 16,
+      "regParam": 0.05,
+      "maxIter": 10,
+      "cv_rmse": 0.654763595109212
+    },
+    {
+      "rank": 12,
+      "regParam": 0.1,
+      "maxIter": 10,
+      "cv_rmse": 0.6863895843038099
+    },
+    {
+      "rank": 16,
+      "regParam": 0.1,
+      "maxIter": 10,
+      "cv_rmse": 0.6922900939335572
+    },
+    {
+      "rank": 16,
+      "regParam": 0.02,
+      "maxIter": 10,
+      "cv_rmse": 0.696145369815076
+    },
+    {
+      "rank": 8,
+      "regParam": 0.05,
+      "maxIter": 10,
+      "cv_rmse": 0.7241004462579216
+    },
+    {
+      "rank": 8,
+      "regParam": 0.02,
+      "maxIter": 10,
+      "cv_rmse": 0.7361665245383447
+    },
+    {
+      "rank": 8,
+      "regParam": 0.1,
+      "maxIter": 10,
+      "cv_rmse": 0.7423592136324818
+    }
+  ],
   "best_params": {
     "rank": 12,
-    "regParam": 0.1,
+    "regParam": 0.05,
     "maxIter": 10
   },
-  "als_rmse": 0.6614597013072939,
-  "als_mae": 0.5307989667822408,
+  "als_rmse": 0.5966416565129524,
+  "als_mae": 0.47815470128924475,
   "test_coverage": 1.0,
   "ranking": {
-    "ALS (rank=12, reg=0.1)": {
-      "precision": 0.04339815762538387,
-      "recall": 0.04804773676819872,
-      "ndcg": 0.05183439450684624
+    "ALS (rank=12, reg=0.05)": {
+      "precision": 0.045240532241555845,
+      "recall": 0.05190286889866353,
+      "ndcg": 0.054213748762038064
     },
     "meilleures notes (moyenne ajustee)": {
       "precision": 0.01248720573183214,
@@ -55,8 +112,8 @@
       "ndcg": null
     }
   },
-  "lift_vs_random": 3.3134442719145407,
-  "final_fit_seconds": 19.9,
+  "lift_vs_random": 3.4541093589297818,
+  "final_fit_seconds": 6.3,
   "checks": {
     "ALS meilleur que toutes les baselines (RMSE)": true,
     "ALS meilleur que le hasard (Precision@K)": true,
