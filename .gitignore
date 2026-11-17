@@ -4,3 +4,5 @@ data/generated/
 .ipynb_checkpoints/
 __pycache__/
 *:Zone.Identifier
+logs/
+pig_*.log
