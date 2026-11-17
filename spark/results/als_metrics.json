@@ -1,0 +1,67 @@
+{
+  "k": 5,
+  "relevant_threshold": 4.0,
+  "seed": 42,
+  "fast": true,
+  "n_train": 79334,
+  "n_test": 19959,
+  "n_users": 1000,
+  "n_movies": 500,
+  "cluster": {
+    "spark_version": "3.5.9",
+    "master": "spark://spark-master:7077",
+    "executors": 1,
+    "default_parallelism": 2
+  },
+  "baselines_rmse": {
+    "moyenne globale": 0.8662178078220027,
+    "moyenne par film": 0.8682732422338498,
+    "moyenne par utilisateur": 0.8297694408196963,
+    "biais utilisateur + film": 0.8318999756982399
+  },
+  "bench_fit_seconds": 18.1,
+  "bench_fit_params": {
+    "rank": 12,
+    "regParam": 0.1,
+    "maxIter": 10
+  },
+  "best_params": {
+    "rank": 12,
+    "regParam": 0.1,
+    "maxIter": 10
+  },
+  "als_rmse": 0.6614597013072939,
+  "als_mae": 0.5307989667822408,
+  "test_coverage": 1.0,
+  "ranking": {
+    "ALS (rank=12, reg=0.1)": {
+      "precision": 0.04339815762538387,
+      "recall": 0.04804773676819872,
+      "ndcg": 0.05183439450684624
+    },
+    "meilleures notes (moyenne ajustee)": {
+      "precision": 0.01248720573183214,
+      "recall": 0.011095846173213865,
+      "ndcg": 0.014911674821767341
+    },
+    "plus populaires (nb de notes)": {
+      "precision": 0.012077789150460594,
+      "recall": 0.010805891047025371,
+      "ndcg": 0.013592757571373671
+    },
+    "au hasard (esperance exacte)": {
+      "precision": 0.01309759696073234,
+      "recall": 0.011890676155657118,
+      "ndcg": null
+    }
+  },
+  "lift_vs_random": 3.3134442719145407,
+  "final_fit_seconds": 19.9,
+  "checks": {
+    "ALS meilleur que toutes les baselines (RMSE)": true,
+    "ALS meilleur que le hasard (Precision@K)": true,
+    "ALS meilleur que 'plus populaires' (Precision@K)": true,
+    "calcul distribue (au moins 1 executeur)": true,
+    "recommandations pour tous les utilisateurs": true
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "n": 1000,
+  "n_churned": 257,
+  "prevalence": 0.257,
+  "n_train": 838,
+  "n_test": 162,
+  "features": [
+    "age",
+    "age_missing",
+    "is_male",
+    "monthly_price",
+    "nb_ratings",
+    "avg_rating",
+    "nb_views",
+    "total_minutes",
+    "avg_minutes_per_view",
+    "nb_distinct_movies",
+    "share_mobile",
+    "share_tv",
+    "share_web",
+    "share_tablet",
+    "nb_tags",
+    "nb_events"
+  ],
+  "cluster": {
+    "spark_version": "3.5.9",
+    "master": "spark://spark-master:7077",
+    "executors": 1,
+    "default_parallelism": 2
+  },
+  "seed": 42,
+  "baselines": {
+    "auc_random": 0.5,
+    "accuracy_majority": 0.7530864197530864,
+    "auc_one_variable_nb_ratings": 0.4769467213114754
+  },
+  "models": {
+    "Regression logistique": {
+      "auc_roc": 0.5510245901639343,
+      "auc_pr": 0.30254653026367706,
+      "accuracy": 0.5740740740740741,
+      "precision": 0.3013698630136986,
+      "recall": 0.55,
+      "f1": 0.3893805309734513,
+      "tp": 22,
+      "fp": 51,
+      "fn": 18,
+      "tn": 71,
+      "params": {
+        "regParam": 0.0
+      },
+      "cv3_auc_train": 0.5052212739769885,
+      "train_seconds": 33.9,
+      "cv5_auc_all": 0.5268244785338453
+    },
+    "Random Forest": {
+      "auc_roc": 0.48176229508196733,
+      "auc_pr": 0.23672232352089076,
+      "accuracy": 0.7098765432098766,
+      "precision": 0.29411764705882354,
+      "recall": 0.125,
+      "f1": 0.17543859649122806,
+      "tp": 5,
+      "fp": 12,
+      "fn": 35,
+      "tn": 110,
+      "params": {
+        "numTrees": 50,
+        "maxDepth": 8
+      },
+      "cv3_auc_train": 0.5023148348427354,
+      "train_seconds": 30.6,
+      "cv5_auc_all": 0.51769288067466
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "nb_ratings",
+      "importance": 0.0960079637879181
+    },
+    {
+      "feature": "nb_events",
+      "importance": 0.08586050337427922
+    },
+    {
+      "feature": "avg_rating",
+      "importance": 0.08328074553263208
+    },
+    {
+      "feature": "share_tv",
+      "importance": 0.08116813055300462
+    },
+    {
+      "feature": "share_web",
+      "importance": 0.07761322916200053
+    },
+    {
+      "feature": "share_tablet",
+      "importance": 0.07632688554438095
+    },
+    {
+      "feature": "age",
+      "importance": 0.0736884588233789
+    },
+    {
+      "feature": "share_mobile",
+      "importance": 0.07159800391970787
+    },
+    {
+      "feature": "nb_distinct_movies",
+      "importance": 0.06989073241133227
+    },
+    {
+      "feature": "nb_tags",
+      "importance": 0.06956458438712428
+    },
+    {
+      "feature": "avg_minutes_per_view",
+      "importance": 0.06944402872701186
+    },
+    {
+      "feature": "total_minutes",
+      "importance": 0.06155744201769655
+    },
+    {
+      "feature": "nb_views",
+      "importance": 0.05695399814917274
+    },
+    {
+      "feature": "monthly_price",
+      "importance": 0.017716216244797838
+    },
+    {
+      "feature": "is_male",
+      "importance": 0.009329077365561957
+    },
+    {
+      "feature": "age_missing",
+      "importance": 0.0
+    }
+  ],
+  "best_cv5_auc": 0.5268244785338453,
+  "auc_noise_level": 0.015811388300841896,
+  "checks": {
+    "modeles entraines et evalues": true,
+    "AUC defini pour chaque modele": true,
+    "calcul distribue (au moins 1 executeur)": true
+  }
+}

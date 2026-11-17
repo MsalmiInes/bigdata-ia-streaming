@@ -1,0 +1,22 @@
+{
+  "spark_version": "3.5.9",
+  "master": "spark://spark-master:7077",
+  "executors": 1,
+  "default_parallelism": 2,
+  "n_ratings": 99293,
+  "n_users": 1000,
+  "n_movies": 500,
+  "users_with_ratings": 1000,
+  "movies_with_ratings": 500,
+  "density": 0.198586,
+  "rating_mean": 3.198845840089432,
+  "rating_std": 0.8695331967399499,
+  "churn_rate": 0.257,
+  "checks": {
+    "ratings non vide": true,
+    "aucune note NULL": true,
+    "notes dans [0.5 ; 5]": true,
+    "aucun NULL dans les features utilisateur": true,
+    "calcul distribue (au moins 1 executeur)": true
+  }
+}

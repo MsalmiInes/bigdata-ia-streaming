@@ -1,0 +1,50 @@
+==========================================================================
+PHASE 6 - SPARK MLLIB : RESULTATS
+==========================================================================
+
+Cluster : Spark 3.5.9 | spark://spark-master:7077 | executeurs : 1
+Donnees : 99293 notes | 1000 utilisateurs | 500 films | densite 19.9 %
+
+--- 1) RECOMMANDATION (ALS) : 79334 notes d'entrainement, 19959 de test ---
+
+Prediction de la note (RMSE, plus bas = mieux) :
+  moyenne globale                0.8662
+  moyenne par film               0.8683
+  moyenne par utilisateur        0.8298
+  biais utilisateur + film       0.8319
+  ALS {'rank': 12, 'regParam': 0.1, 'maxIter': 10} 0.6615   (MAE 0.5308)
+  -> gain de 20.3 % sur la meilleure baseline
+
+Classement des films (film pertinent = note >= 4.0) :
+  systeme                                       P@5      R@5   NDCG@5
+  ALS (rank=12, reg=0.1)                     0.0434   0.0480   0.0518
+  meilleures notes (moyenne ajustee)         0.0125   0.0111   0.0149
+  plus populaires (nb de notes)              0.0121   0.0108   0.0136
+  au hasard (esperance exacte)               0.0131   0.0119        -
+  -> ALS : 3.3 fois meilleur que le hasard (Precision@5)
+
+Temps (reference pour le benchmark de la phase 8) :
+  entrainement ALS {'rank': 12, 'regParam': 0.1, 'maxIter': 10} : 18.1 s | executeurs : 1
+  [OK] ALS meilleur que toutes les baselines (RMSE)
+  [OK] ALS meilleur que le hasard (Precision@K)
+  [OK] ALS meilleur que 'plus populaires' (Precision@K)
+  [OK] calcul distribue (au moins 1 executeur)
+  [OK] recommandations pour tous les utilisateurs
+
+--- 2) PREDICTION DU CHURN (bonus) : 1000 utilisateurs, 25.7 % de resilies ---
+
+  Hasard : AUC 0.500 | score d'une seule variable (nb de notes) : AUC 0.477
+
+  modele                    AUC test  AUC-PR  rappel  precision  AUC CV-5
+  Regression logistique        0.551   0.303    0.55       0.30     0.527
+  Random Forest                0.482   0.237    0.12       0.29     0.518
+
+  Variables les plus importantes (Random Forest) : nb_ratings (0.10), nb_events (0.09), avg_rating (0.08)
+
+  LECTURE : AUC 0.527 (+/- 0.03) : pas de signal exploitable. Le desabonnement des donnees
+  synthetiques est quasi aleatoire : a presenter comme une limite du jeu de donnees, pas du modele.
+  [OK] modeles entraines et evalues
+  [OK] AUC defini pour chaque modele
+  [OK] calcul distribue (au moins 1 executeur)
+
+Resultat : 8 controle(s) OK / 0 KO
