@@ -1,0 +1,26 @@
+=== BENCHMARK HIVE : CSV / ORC / Parquet  (2026-11-17 19:08) ===
+
+--- 1) TAILLE SUR DISQUE (HDFS, une copie) ---
+TABLE               CSV (Mo)     ORC (Mo)  Parquet(Mo)    CSV/ORC
+ratings                 3.00         0.60         0.99       x5.0
+movies                  0.02         0.00            -       x4.1
+users                   0.03         0.01            -       x4.4
+subscriptions           0.04         0.01            -       x5.8
+tags                    0.17         0.03            -       x5.5
+watch_logs              1.99         0.47            -       x4.2
+events                  0.63         0.13            -       x4.7
+
+--- 2) TEMPS DE REQUETE sur ratings (moyenne de 3 executions, en secondes) ---
+  duree de connexion beeline retiree : 8.2s
+REQUETE                                         A: filtre    B: groupe
+ratings_csv                                           3.2          4.0
+ratings_orc                                           3.0          4.3
+ratings_pq                                            2.5          3.2
+
+--- 3) ELAGAGE DE PARTITIONS (ratings_orc, partitionnee par annee) ---
+filtre sur la colonne de partition (rating_year = 2025)           3.0s
+meme resultat sans utiliser la partition (YEAR(ts) = 2025)        0.6s
+
+A : AVG(rating) avec filtre rating >= 4   B : GROUP BY movie_id puis agregation
+Sur un petit jeu de donnees, le temps est domine par le demarrage du job :
+l'ecart entre formats devient net avec le jeu medium puis large (phase 8).
