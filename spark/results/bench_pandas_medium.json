@@ -1,0 +1,32 @@
+{
+  "size": "medium",
+  "pandas": "2.3.3",
+  "read_s": 4.0,
+  "raw_rows": {
+    "ratings": 1003312,
+    "movies": 3000,
+    "users": 10000,
+    "subscriptions": 10000,
+    "tags": 50000,
+    "watch_logs": 500000,
+    "kafka_events": 200000
+  },
+  "clean_s": 5.09,
+  "clean_rows": {
+    "ratings": 993219,
+    "movies": 3000,
+    "users": 10000,
+    "subscriptions": 10000,
+    "tags": 50000,
+    "watch_logs": 494890,
+    "kafka_events": 200000
+  },
+  "transform_s": 0.39,
+  "transform_rows": {
+    "ratings_enriched": 993219,
+    "movie_stats": 3000,
+    "user_features": 10000
+  },
+  "total_s": 9.52,
+  "peak_rss_mb": 591.0
+}

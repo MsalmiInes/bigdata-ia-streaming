@@ -1,0 +1,14 @@
+# Surcharge utilisee UNIQUEMENT par le benchmark (phase 8) : ajoute un 2e worker Spark.
+# Les scripts de bench/ l'activent avec COMPOSE_FILE=docker-compose.yml:docker-compose.bench.yml
+# (le fichier docker-compose.yml principal n'est pas modifie).
+services:
+  spark-worker-2:
+    image: bigdata-spark:1.0
+    profiles: [spark]
+    hostname: spark-worker-2
+    restart: on-failure:5
+    networks: [bigdata]
+    depends_on: [spark-master]
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker",
+              "--cores", "2", "--memory", "1536m", "--webui-port", "8081",
+              "spark://spark-master:7077"]
