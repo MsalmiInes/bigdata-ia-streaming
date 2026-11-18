@@ -10,8 +10,8 @@
   "executor_memory": "1g",
   "n_train": 794971,
   "n_test": 198248,
-  "read_cache_s": 23.36,
-  "warmup_s": 20.23,
+  "read_cache_s": 12.47,
+  "warmup_s": 11.85,
   "params": {
     "rank": 12,
     "regParam": 0.1,
@@ -19,12 +19,12 @@
   },
   "reps": 3,
   "fit_s_list": [
-    14.4,
-    15.08,
-    13.21
+    21.57,
+    9.75,
+    9.7
   ],
-  "fit_s_mean": 14.23,
-  "fit_s_min": 13.21,
+  "fit_s_mean": 13.67,
+  "fit_s_min": 9.7,
   "rmse": 0.6532899462316695,
-  "reco_s": 13.13
+  "reco_s": 6.21
 }
