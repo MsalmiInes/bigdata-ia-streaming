@@ -1,0 +1,30 @@
+{
+  "size": "large",
+  "workers": 1,
+  "executors": 1,
+  "default_parallelism": 2,
+  "master": "spark://spark-master:7077",
+  "spark_version": "3.5.9",
+  "cores_max": 4,
+  "executor_cores": 2,
+  "executor_memory": "1g",
+  "n_train": 3973911,
+  "n_test": 992707,
+  "read_cache_s": 18.92,
+  "warmup_s": 20.3,
+  "params": {
+    "rank": 12,
+    "regParam": 0.1,
+    "maxIter": 10
+  },
+  "reps": 3,
+  "fit_s_list": [
+    21.66,
+    22.19,
+    24.91
+  ],
+  "fit_s_mean": 22.92,
+  "fit_s_min": 21.66,
+  "rmse": 0.6438836614050214,
+  "reco_s": null
+}
